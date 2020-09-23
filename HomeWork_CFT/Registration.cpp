@@ -79,25 +79,14 @@ bool Data::CheckRepeatPassword(string password,string RepeatPassword)
 	}
 	return true;
 }
-bool Data::CheckVolidatiton()
+bool Data::CheckVolidatiton(string & answer,string & msg)
 {
-	cout << "Регистрация"<< "(yes/no)?" << endl;
-	cin >> answer;
-	if (answer == "yes")
+	if (answer != "yes" && answer != "no")
 	{
-		return true;
-	}
-	else if (answer == "no")
-	{
-		cout << "Отмена регистрации!" << endl;
-		
-	}
-	else
-	{
-		cout << "Необходимо ввести 'yes' для продолжения, 'no' для выхода!" << endl;
+		msg="Необходимо ввести 'yes' для продолжения, 'no' для выхода!";
 		return false;
 	}
-	return false;
+	return true;
 }
 
 void Data::SetName(string name) 

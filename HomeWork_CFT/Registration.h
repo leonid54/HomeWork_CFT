@@ -14,7 +14,7 @@ public:
 	bool isStringNumber(const string& name);
 	bool CheckPassword(string password);
 	bool CheckRepeatPassword(string password,string RepeatPassword);
-	bool CheckVolidatiton();
+	bool CheckVolidatiton(string & answer, string& msg);
 	void SetName(string name);
 	void SetSurname(string surname);
 	void SetDataBirth(string DataBirth);
@@ -22,5 +22,4 @@ public:
 	void SetRepeatPassword(string RepeatPassword);
 private:
 	string m_name, m_surname, m_DataBirth, m_password, m_RepeatPassword;
-	string answer;
 };

@@ -7,7 +7,7 @@ int main()
 {
     setlocale(LC_ALL, "ru");
 	Data a;
-	string name, surname, DataBirth, password, RepeatPassword;
+	string name, surname, DataBirth, password, RepeatPassword,answer,msg;
 	cout << "Регистрация нового пользователя:" <<endl
 		 <<"Введите Имя(Подсказка:Имя не должно содержать кириллицу):";
 	cin >> name;
@@ -63,20 +63,40 @@ int main()
 		cout << "Придумайте Пароль:";
 		cin >> password;
 	}
-	a.SetPassword(password);
+
 	cout << "Подтвердите Пароль:";
 	cin >> RepeatPassword;
 	while (!a.CheckRepeatPassword(password, RepeatPassword))
 	{
 		cout << "Пароли не совпадают!" << endl;
+		cout << "Придумайте Пароль:";
+		cin >> password;
+		while (!a.CheckPassword(password))
+		{
+			cout << "Пароль не может иметь меньше 5 и больше 15 знаков" << endl;
+			cout << "Придумайте Пароль:";
+			cin >> password;
+		}
 		cout << "Подтвердите Пароль:";
 		cin >> RepeatPassword;
 	}
+	a.SetPassword(password);
 	a.SetRepeatPassword(RepeatPassword);
-	if (a.CheckVolidatiton() == true)
+	cout << "Регистрация(yes/no)?" << endl;
+	cin >> answer;
+	while(!a.CheckVolidatiton(answer,msg))
 	{
-		system("cls");
-		cout << "Приветствие" << endl;
+		cout << msg << endl;
+		cin >> answer;
+	}
+	if (answer == "yes")
+	{
+	    system("cls");
+	    cout << "Приветствие" << endl;
+	}
+	else
+	{
+		cout << "Отмена регистрации!" << endl;
 	}
 
 	return 0;
