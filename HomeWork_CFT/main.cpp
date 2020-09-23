@@ -1,5 +1,6 @@
 //ЗАДАНИЕ ДЛЯ ЦФТ
 #include <iostream>
+
 #include "Registration.h"
 using namespace std;
 
@@ -8,6 +9,12 @@ int main()
     setlocale(LC_ALL, "ru");
 	Entry a;
 	string name, surname, DataBirth, password, repeatPassword,answer,msg;
+	Entry loadedEntry;
+	if (loadedEntry.loadFromFile())
+	{
+		std::cout << loadedEntry.getName() << " " << loadedEntry.getSurname() << " " << loadedEntry.getPassword() << endl;
+
+	}
 	cout << "Регистрация нового пользователя:" <<endl
 		 <<"Введите Имя(Подсказка:Имя не должно содержать кириллицу,цифры):";
 	cin >> name;
@@ -101,6 +108,8 @@ int main()
 	{
 		cout << "Отмена регистрации!" << endl;
 	}
+	Entry entry;
+	entry.saveToFile();
 	if (answer == "yes")
 	{
 		cout << "Войти?(yes/no)" << endl;

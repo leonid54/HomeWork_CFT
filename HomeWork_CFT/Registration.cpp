@@ -105,8 +105,28 @@ string Entry::getSurname()
 {
 	return m_surname;
 }
+string Entry::getPassword()
+{
+	return m_password;
+}
 
 bool Entry::CheckEnterPassword(string password)
 {
 	return(password == m_password);
+}
+void Entry::saveToFile()
+{
+	std::ofstream fstream("entry.txt");
+	fstream << m_name << endl;
+	fstream << m_surname << endl;
+	fstream << m_password << endl;
+}
+bool Entry::loadFromFile()
+{
+	ifstream fstream("entry.txt");
+	if (!fstream.is_open()) return false;
+	getline(fstream, m_name);
+	getline(fstream, m_surname);
+	getline(fstream, m_password);
+	return true;
 }

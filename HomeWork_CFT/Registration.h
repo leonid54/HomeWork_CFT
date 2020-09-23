@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 
 class Entry
@@ -21,7 +22,10 @@ public:
 	void SetPassword(string password);
 	string getName();
 	string getSurname();
+	string getPassword();
 	bool CheckEnterPassword(string password);
+	void saveToFile();
+	bool loadFromFile();
 
 private:
 	string m_name, m_surname, m_DataBirth, m_password, m_repeatPassword;
