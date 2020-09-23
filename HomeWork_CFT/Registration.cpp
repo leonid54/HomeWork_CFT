@@ -1,11 +1,11 @@
 ﻿#include "Registration.h"
 #pragma once
-
+using namespace std;
 Entry::Entry()
 {
 
 }
-bool Entry::CheckSize(string name)
+bool Entry::checkSize(string name)
 {
 	return(name.size() >= 2);
 }
@@ -25,7 +25,7 @@ bool Entry::isStringAlpha(const string& name)
 	}
 	return true;
 }
-bool Entry::CheckDataBirth(string DataBirth)
+bool Entry::checkDataBirth(string DataBirth)
 {
 	if (DataBirth.size() < 10)
 	{
@@ -54,7 +54,7 @@ bool Entry::isStringNumber(const string& name)
 	return true;
 }
 
-bool Entry::CheckPassword(string password)
+bool Entry::checkPassword(string password)
 {
 	if (password.size() < 5)
 	{
@@ -67,11 +67,11 @@ bool Entry::CheckPassword(string password)
 	return true;
 }
 
-bool Entry::CheckrepeatPassword(string password,string repeatPassword)
+bool Entry::checkrepeatPassword(string password,string repeatPassword)
 {
 	return(password == repeatPassword);
 }
-bool Entry::CheckValidatiton(string & answer,string & msg)
+bool Entry::checkValidatiton(string & answer,string & msg)
 {
 	if (answer != "yes" && answer != "no")
 	{
@@ -81,19 +81,19 @@ bool Entry::CheckValidatiton(string & answer,string & msg)
 	return true;
 }
 
-void Entry::SetName(string name) 
+void Entry::setName(string name) 
 {
 	m_name = name;
 }
-void Entry::SetSurname(string surname)
+void Entry::setSurname(string surname)
 {
 	m_surname = surname;
 }
-void Entry::SetDataBirth(string DataBirth)
+void Entry::setdataBirth(string DataBirth)
 {
-	m_DataBirth = DataBirth;
+	m_dataBirth = DataBirth;
 }
-void Entry::SetPassword(string password)
+void Entry::setPassword(string password)
 {
 	m_password = password;
 }
@@ -110,13 +110,13 @@ string Entry::getPassword()
 	return m_password;
 }
 
-bool Entry::CheckEnterPassword(string password)
+bool Entry::checkEnterPassword(string password)
 {
 	return(password == m_password);
 }
 void Entry::saveToFile()
 {
-	std::ofstream fstream("entry.txt");
+	ofstream fstream("entry.txt");
 	fstream << m_name << endl;
 	fstream << m_surname << endl;
 	fstream << m_password << endl;
