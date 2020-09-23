@@ -1,2 +1,4 @@
 ﻿  Registration.cpp
+C:\Users\leong\source\repos\HomeWork_CFT\HomeWork_CFT\Registration.cpp(23,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\leong\source\repos\HomeWork_CFT\HomeWork_CFT\Registration.cpp(51,20): warning C4018: <: несоответствие типов со знаком и без знака
   HomeWork_CFT.vcxproj -> C:\Users\leong\source\repos\HomeWork_CFT\Debug\HomeWork_CFT.exe

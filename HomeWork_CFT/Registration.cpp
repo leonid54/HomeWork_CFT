@@ -1,90 +1,122 @@
-#include "Registration.h"
+п»ї#include "Registration.h"
 #pragma once
 
-Data::Data(string name, string surname, string DataBirth, string password, string RepeatPassword)
+Data::Data()
 {
-	this->name = name;
-	this->surname = surname;
-	this->DataBirth = DataBirth;
-	this->password = password;
-	this->RepeatPassword = RepeatPassword;
+
 }
-void Data::CheckName()
+bool Data::CheckSize(string name)
 {
-	if (name.size() < 2)
+	if(name.size() < 2)
 	{
-		cout << "Имя должно содержать более 1 буквы!" << endl;
-		cout<< "Введите Имя:";
-		cin >> name;
-		Data::CheckName();
+		return false;
 	}
+	return true;
 }
 
-void Data::CheckSurname()
+bool Data::isStringAlpha(const string& name)
 {
-	if (surname.size() < 3)
+	if (name.empty())
 	{
-		cout << "Фамилия должна содержать более двух букв!" << endl;
-		cout << "Введите Фамилию:";
-		cin >> surname;
-		Data::CheckSurname();
+		return false;
 	}
+	for (int i = 0; i < name.size(); i++)
+	{
+		if (!isalpha(name[i]))
+		{
+			return false;
+		}
+	}
+	return true;
 }
-
-void Data::CheckDataBitrh()
+bool Data::CheckDataBirth(string DataBirth)
 {
 	if (DataBirth.size() < 10)
 	{
-		cout << "Дата Рождения должна содержать не менее 10 знаков!" << endl;
-		cout << "Введите Дату Рождения:";
-		cin >> DataBirth;
-		Data::CheckDataBitrh();
+		return false;
 	}
+	else if (DataBirth.size() > 10)
+	{
+		return false;
+	}
+	return true;
 }
 
-void Data::CheckPassword()
+bool Data::isStringNumber(const string& name)
+{
+	if (name.empty())
+	{
+		return false;
+	}
+	for (int i = 0; i < name.size(); i++)
+	{
+		if (isalpha(name[i]) && name[i]!= '.')
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+bool Data::CheckPassword(string password)
 {
 	if (password.size() < 5)
 	{
-		cout << "Пароль должен содержать не менее 5 знаков"<<endl;
-		cout << "Придумайте Пароль:";
-		cin >> password;
-		Data::CheckPassword();
+		return false;
 	}
+	else if (password.size() > 15)
+	{
+		return false;
+	}
+	return true;
 }
 
-void Data::CheckRepeatPassword()
+bool Data::CheckRepeatPassword(string password,string RepeatPassword)
 {
 	if (password != RepeatPassword)
 	{
-		cout << "Пароли не совпадают!" << endl;
-		cout << "Подтвердите Пароль:";
-		cin >> RepeatPassword;
-		Data::CheckRepeatPassword();
+		return false;
 	}
+	return true;
 }
-
-void Data::CheckVolidatiton()
+bool Data::CheckVolidatiton()
 {
-	cout << "Регистрация(yes/no)?" << endl;
+	cout << "Р РµРіРёСЃС‚СЂР°С†РёСЏ"<< "(yes/no)?" << endl;
 	cin >> answer;
 	if (answer == "yes")
 	{
-		Data::CheckName();
-		Data::CheckSurname();
-		Data::CheckDataBitrh();
-		Data::CheckPassword();
-		Data::CheckRepeatPassword();
-
+		return true;
 	}
-	else if(answer == "no")
+	else if (answer == "no")
 	{
-		cout << "Отмена регистрации! " << endl;
+		cout << "РћС‚РјРµРЅР° СЂРµРіРёСЃС‚СЂР°С†РёРё!" << endl;
+		
 	}
 	else
 	{
-		cout << "Для продолжения регистрации введите 'yes', для отмены 'no' " << endl;
-		Data::CheckVolidatiton();
-	
+		cout << "РќРµРѕР±С…РѕРґРёРјРѕ РІРІРµСЃС‚Рё 'yes' РґР»СЏ РїСЂРѕРґРѕР»Р¶РµРЅРёСЏ, 'no' РґР»СЏ РІС‹С…РѕРґР°!" << endl;
+		return false;
 	}
+	return false;
+}
+
+void Data::SetName(string name) 
+{
+	m_name = name;
+}
+void Data::SetSurname(string surname)
+{
+	m_surname = surname;
+}
+void Data::SetDataBirth(string DataBirth)
+{
+	m_DataBirth = DataBirth;
+}
+void Data::SetPassword(string password)
+{
+	m_password = password;
+}
+void Data::SetRepeatPassword(string RepeatPassword)
+{
+	m_RepeatPassword = RepeatPassword;
 }
