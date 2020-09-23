@@ -19,7 +19,7 @@ public:
 	void SetSurname(string surname);
 	void SetDataBirth(string DataBirth);
 	void SetPassword(string password);
-	void SetRepeatPassword(string RepeatPassword);
+
 private:
 	string m_name, m_surname, m_DataBirth, m_password, m_RepeatPassword;
 };

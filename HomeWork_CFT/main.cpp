@@ -81,7 +81,6 @@ int main()
 		cin >> RepeatPassword;
 	}
 	a.SetPassword(password);
-	a.SetRepeatPassword(RepeatPassword);
 	cout << "Регистрация(yes/no)?" << endl;
 	cin >> answer;
 	while(!a.CheckVolidatiton(answer,msg))
@@ -98,6 +97,16 @@ int main()
 	{
 		cout << "Отмена регистрации!" << endl;
 	}
-
+	cout << "Войти?(yes/no)" << endl;
+	cin >> answer;
+	if (answer == "yes")
+	{
+		cout << "Добро пожаловать, " << name;
+	}
+	else
+	{
+		cout << "Отмена входа" << endl;
+	}
+	
 	return 0;
 }

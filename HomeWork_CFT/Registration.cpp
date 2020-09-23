@@ -105,7 +105,3 @@ void Data::SetPassword(string password)
 {
 	m_password = password;
 }
-void Data::SetRepeatPassword(string RepeatPassword)
-{
-	m_RepeatPassword = RepeatPassword;
-}
