@@ -3,11 +3,33 @@
 #include "Registration.h"
 using namespace std;
 
+void fillParams(string &name, string& surname, string& dataBirth, string& password, string& repeatPassword, string& answer)
+{
+	cout << "Регистрация нового пользователя:" << endl
+		<< "Введите Имя(Подсказка:Имя не должно содержать кириллицу,цифры):";
+	cin >> name;
+
+	cout << "Введите Фамилию(Подсказка:Фамилия не должна содержать кириллицу,цифры):";
+	cin >> surname;
+
+	cout << "Введите Дату Рождения(пример: 08.03.2001):";
+	cin >> dataBirth;
+
+	cout << "Придумайте Пароль(от 5 до 16 знаков):";
+	cin >> password;
+
+	cout << "Подтвердите Пароль:";
+	cin >> repeatPassword;
+
+	cout << "Регистрация(yes/no)?" << endl;
+	cin >> answer;
+}
+
 int main()
 {
     setlocale(LC_ALL, "ru");
 	Entry entry;
-	string name, surname, DataBirth, password, repeatPassword,answer,msg;
+	string name, surname, dataBirth, password, repeatPassword,answer,msg;
 	Entry loadedEntry;
 	if (loadedEntry.loadFromFile())
 	{
@@ -16,26 +38,8 @@ int main()
 	}
 	if (answer == "no" || !loadedEntry.loadFromFile())
 	{
-
-		cout << "Регистрация нового пользователя:" << endl
-			<< "Введите Имя(Подсказка:Имя не должно содержать кириллицу,цифры):";
-		cin >> name;
-
-		cout << "Введите Фамилию(Подсказка:Фамилия не должна содержать кириллицу,цифры):";
-		cin >> surname;
-
-		cout << "Введите Дату Рождения(пример: 08.03.2001):";
-		cin >> DataBirth;
-
-		cout << "Придумайте Пароль(от 5 до 16 знаков):";
-		cin >> password;
-
-		cout << "Подтвердите Пароль:";
-		cin >> repeatPassword;
-
-		cout << "Регистрация(yes/no)?" << endl;
-		cin >> answer;
-
+		fillParams(name, surname, dataBirth, password, repeatPassword, answer);
+		
 		while (!entry.checkValidatiton(answer, msg))
 		{
 			cout << msg << endl;
@@ -69,19 +73,19 @@ int main()
 				cin >> surname;
 			}
 			entry.setSurname(surname);
-			while (!entry.checkDataBirth(DataBirth))
+			while (!entry.checkDataBirth(dataBirth))
 			{
 				cout << "Дата рождения должна содержать 10 чисел(пример: 08.03.2001)" << endl;
 				cout << "Введите Дату Рождения:";
-				cin >> DataBirth;
+				cin >> dataBirth;
 			}
-			while (!entry.isStringNumber(DataBirth))
+			while (!entry.isStringNumber(dataBirth))
 			{
 				cout << "Дата рождения должна содержать только цифры(пример: 08.03.2001)" << endl;
 				cout << "Введите Дату Рождения:";
-				cin >> DataBirth;
+				cin >> dataBirth;
 			}
-			entry.setdataBirth(DataBirth);
+			entry.setdataBirth(dataBirth);
 			while (!entry.checkPassword(password))
 			{
 				cout << "Пароль не может иметь меньше 5 и больше 15 знаков" << endl;
