@@ -6,8 +6,8 @@ using namespace std;
 int main()
 {
     setlocale(LC_ALL, "ru");
-	Data a;
-	string name, surname, DataBirth, password, RepeatPassword,answer,msg;
+	Entry a;
+	string name, surname, DataBirth, password, repeatPassword,answer,msg;
 	cout << "Регистрация нового пользователя:" <<endl
 		 <<"Введите Имя(Подсказка:Имя не должно содержать кириллицу,цифры):";
 	cin >> name;
@@ -22,12 +22,12 @@ int main()
 	cin >> password;
 	
 	cout << "Подтвердите Пароль:";
-	cin >> RepeatPassword;
+	cin >> repeatPassword;
 	
 	cout << "Регистрация(yes/no)?" << endl;
 	cin >> answer;
 
-	while(!a.CheckVolidatiton(answer,msg))
+	while(!a.CheckValidatiton(answer,msg))
 	{
 		cout << msg << endl;
 		cin >> answer;
@@ -79,7 +79,7 @@ int main()
 			cout << "Придумайте Пароль:";
 			cin >> password;
 		}
-		while (!a.CheckRepeatPassword(password, RepeatPassword))
+		while (!a.CheckrepeatPassword(password, repeatPassword))
 		{
 			cout << "Пароли не совпадают!" << endl;
 			cout << "Придумайте Пароль:";
@@ -91,7 +91,7 @@ int main()
 				cin >> password;
 			}
 			cout << "Подтвердите Пароль:";
-			cin >> RepeatPassword;
+			cin >> repeatPassword;
 		}
 		a.SetPassword(password);
 	    system("cls");
@@ -101,19 +101,29 @@ int main()
 	{
 		cout << "Отмена регистрации!" << endl;
 	}
-	cout << "Войти?(yes/no)" << endl;
-	cin >> answer;
 	if (answer == "yes")
 	{
-		cout << "Добро пожаловать, " << name <<" "<<surname<<endl;
-	}
-	else if(answer == "no")
-	{
-		cout << "Отмена входа" << endl;
-	}
-	else
-	{
-		cout << "Ошибка!Необходимо ввести 'yes' для продолжения, 'no' для выхода!" << endl;
+		cout << "Войти?(yes/no)" << endl;
+		cin >> answer;
+		if (answer == "yes")
+		{
+			cout << "Введите пароль: ";
+			cin >> password;
+			while (!a.CheckEnterPassword(password))
+			{
+				cout << "Неверный пароль!" << endl << "Введите пароль: ";
+				cin >> password;
+			}
+			cout << "Добро пожаловать, " << a.getName() << " " << a.getSurname() << endl;
+		}
+		else if (answer == "no")
+		{
+			cout << "Отмена входа" << endl;
+		}
+		else
+		{
+			cout << "Ошибка!Необходимо ввести 'yes' для продолжения, 'no' для выхода!" << endl;
+		}
 	}
 	return 0;
 }

@@ -3,23 +3,26 @@
 #include <string>
 using namespace std;
 
-class Data
+class Entry
 {
 public:
-	Data();
+	Entry();
 
 	bool CheckSize(string name);
 	bool isStringAlpha(const string& name);
 	bool CheckDataBirth(string DataBirth);
 	bool isStringNumber(const string& name);
 	bool CheckPassword(string password);
-	bool CheckRepeatPassword(string password,string RepeatPassword);
-	bool CheckVolidatiton(string & answer, string& msg);
+	bool CheckrepeatPassword(string password,string repeatPassword);
+	bool CheckValidatiton(string & answer, string& msg);
 	void SetName(string name);
 	void SetSurname(string surname);
 	void SetDataBirth(string DataBirth);
 	void SetPassword(string password);
+	string getName();
+	string getSurname();
+	bool CheckEnterPassword(string password);
 
 private:
-	string m_name, m_surname, m_DataBirth, m_password, m_RepeatPassword;
+	string m_name, m_surname, m_DataBirth, m_password, m_repeatPassword;
 };

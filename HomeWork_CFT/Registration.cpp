@@ -1,20 +1,16 @@
 ﻿#include "Registration.h"
 #pragma once
 
-Data::Data()
+Entry::Entry()
 {
 
 }
-bool Data::CheckSize(string name)
+bool Entry::CheckSize(string name)
 {
-	if(name.size() < 2)
-	{
-		return false;
-	}
-	return true;
+	return(name.size() >= 2);
 }
 
-bool Data::isStringAlpha(const string& name)
+bool Entry::isStringAlpha(const string& name)
 {
 	if (name.empty())
 	{
@@ -29,7 +25,7 @@ bool Data::isStringAlpha(const string& name)
 	}
 	return true;
 }
-bool Data::CheckDataBirth(string DataBirth)
+bool Entry::CheckDataBirth(string DataBirth)
 {
 	if (DataBirth.size() < 10)
 	{
@@ -42,7 +38,7 @@ bool Data::CheckDataBirth(string DataBirth)
 	return true;
 }
 
-bool Data::isStringNumber(const string& name)
+bool Entry::isStringNumber(const string& name)
 {
 	if (name.empty())
 	{
@@ -58,7 +54,7 @@ bool Data::isStringNumber(const string& name)
 	return true;
 }
 
-bool Data::CheckPassword(string password)
+bool Entry::CheckPassword(string password)
 {
 	if (password.size() < 5)
 	{
@@ -71,15 +67,11 @@ bool Data::CheckPassword(string password)
 	return true;
 }
 
-bool Data::CheckRepeatPassword(string password,string RepeatPassword)
+bool Entry::CheckrepeatPassword(string password,string repeatPassword)
 {
-	if (password != RepeatPassword)
-	{
-		return false;
-	}
-	return true;
+	return(password == repeatPassword);
 }
-bool Data::CheckVolidatiton(string & answer,string & msg)
+bool Entry::CheckValidatiton(string & answer,string & msg)
 {
 	if (answer != "yes" && answer != "no")
 	{
@@ -89,19 +81,32 @@ bool Data::CheckVolidatiton(string & answer,string & msg)
 	return true;
 }
 
-void Data::SetName(string name) 
+void Entry::SetName(string name) 
 {
 	m_name = name;
 }
-void Data::SetSurname(string surname)
+void Entry::SetSurname(string surname)
 {
 	m_surname = surname;
 }
-void Data::SetDataBirth(string DataBirth)
+void Entry::SetDataBirth(string DataBirth)
 {
 	m_DataBirth = DataBirth;
 }
-void Data::SetPassword(string password)
+void Entry::SetPassword(string password)
 {
 	m_password = password;
+}
+string Entry::getName()
+{
+	return m_name;
+}
+string Entry::getSurname()
+{
+	return m_surname;
+}
+
+bool Entry::CheckEnterPassword(string password)
+{
+	return(password == m_password);
 }
