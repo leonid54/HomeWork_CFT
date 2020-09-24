@@ -1,6 +1,6 @@
 ﻿//ЗАДАНИЕ ДЛЯ ЦФТ
 #include <iostream>
-#include "Registration.h"
+#include "Entry.h"
 using namespace std;
 
 void fillParams(string &name, string& surname, string& dataBirth, string& password, string& repeatPassword, string& answer)
