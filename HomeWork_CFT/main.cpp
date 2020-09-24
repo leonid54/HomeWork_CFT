@@ -25,6 +25,7 @@ void fillParams(string &name, string& surname, string& dataBirth, string& passwo
 	cin >> answer;
 }
 
+
 int main()
 {
     setlocale(LC_ALL, "ru");
@@ -144,21 +145,21 @@ int main()
 		}
 	}
 		
-		else if (answer == "yes")
+	else if (answer == "yes")
+	{
+		cout << "Введите пароль: ";
+		cin >> password;
+		while (password != loadedEntry.getPassword())
 		{
-			cout << "Введите пароль: ";
+			cout << "Неверный пароль!" << endl << "Введите пароль: ";
 			cin >> password;
-			while (password != loadedEntry.getPassword())
-			{
-				cout << "Неверный пароль!" << endl << "Введите пароль: ";
-				cin >> password;
-			}
-			cout << "Добро пожаловать, " << loadedEntry.getName() << " " << loadedEntry.getSurname() << endl;
 		}
-		else
-		{
-			cout << "Ошибка!Необходимо ввести 'yes' для продолжения, 'no' для выхода!" << endl;
-		}
+		cout << "Добро пожаловать, " << loadedEntry.getName() << " " << loadedEntry.getSurname() << endl;
+	}
+	else
+	{
+		cout << "Ошибка!Необходимо ввести 'yes' для продолжения, 'no' для выхода!" << endl;
+	}
 	
 	return 0;
 }
